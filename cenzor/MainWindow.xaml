@@ -1,0 +1,54 @@
+﻿<Window x:Class="cenzor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:cenzor"
+        mc:Ignorable="d"
+        Title="Censor" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" >
+            <Canvas>
+                <Image Name="imageVideoPreview" MouseLeftButtonDown="imageVideoPreview_MouseLeftButtonDown" MouseMove="imageVideoPreview_MouseMove"/>
+                <Canvas Name="Selection" MouseLeftButtonUp="Selection_MouseLeftButtonUp">
+                <Rectangle Name="SelectionRectangle" Stroke="LightBlue" Fill="#220000FF" Visibility="Collapsed"></Rectangle>
+                </Canvas>
+            </Canvas>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <ProgressBar Name="pbStatus" Minimum="0" Maximum="100" Height="10"/>
+            <DockPanel VerticalAlignment="Center" Margin="10">
+                <TextBox Name="textBoxSliderCensorStart" Text="{Binding ElementName=sliderCensorStart, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+                <Slider Name="sliderCensorStart" Height="20" ValueChanged="sliderCensorStart_ValueChanged" IsSnapToTickEnabled="True" SmallChange="1"  Margin="1"/>
+            </DockPanel>
+            <DockPanel VerticalAlignment="Center" Margin="10">
+                <TextBox Name="textBoxSliderCensorStop" Text="{Binding ElementName=sliderCensorStop, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+                <Slider Name="sliderCensorStop" Height="20" IsSnapToTickEnabled="True" SmallChange="1"  Margin="1"/>
+            </DockPanel>
+            <Button Name="buttonMakeCensor" Content="Censor Selection" Click="buttonMakeCensor_Click"/>
+            <Button x:Name="buttonSavePath" Content="Save Path" Click="buttonSavePath_Click"/>
+            <Button x:Name="buttonMakeVideo" Content="Make Video" Click="buttonMakeVideo_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="0" >
+            <Button x:Name="buttonLoadVideo" Content="Load Video" Click="buttonLoadVideo_Click"/>
+            <ListBox x:Name="listBox" Height="300">
+                <ListBox.Items/>
+            </ListBox>
+            <TextBox Name="textBoxBitrate" Text="200000" TextAlignment="Left" PreviewTextInput="textBoxBitrate_PreviewTextInput" MaxLength="9"/>
+            <Button Name="buttonBitRate" Content="Set Bitrate" Click="buttonBitRate_Click"/>
+            <TextBox Name="textBoxPixelate" Text="7" TextAlignment="Left" PreviewTextInput="textBoxPixelate_PreviewTextInput" MaxLength="2"/>
+            <Button Name="buttonPixelateSet" Content="Set Pixelate" Click="buttonPixelateSet_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" >
+        </StackPanel>
+    </Grid>
+</Window>
