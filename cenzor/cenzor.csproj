@@ -116,6 +116,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="external\AForge.Video.dll" />
+    <Content Include="external\AForge.Video.FFMPEG.dll" />
+    <Content Include="external\avcodec-53.dll" />
+    <Content Include="external\avdevice-53.dll" />
+    <Content Include="external\avfilter-2.dll" />
+    <Content Include="external\avformat-53.dll" />
+    <Content Include="external\avutil-51.dll" />
+    <Content Include="external\postproc-52.dll" />
+    <Content Include="external\swresample-0.dll" />
+    <Content Include="external\swscale-2.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
